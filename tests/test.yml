@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  vars:
+    rpc_user: foo
+    rpc_password: bar
+    rpc_enabled: false
+  roles:
+    - ansible-role-transmission

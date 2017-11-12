@@ -1,0 +1,45 @@
+---
+
+- name: Install packages
+  become: true
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+    force: yes
+  with_items:
+    - transmission-daemon
+    - python-passlib
+
+- name: Create complete directory
+  file:
+    path: "{{ complete_directory }}"
+    state: directory
+    owner: debian-transmission
+    group: debian-transmission
+    mode: 0777
+
+- name: Check configuration
+  template:
+    src: var/lib/transmission-daemon/info/settings.json
+    dest: /var/lib/transmission-daemon/info/settings.json.target
+  register: transmission_config
+
+# Transmission needs to be stopped before modifying the configuration
+- name: Stop transmission
+  service:
+    name: transmission-daemon
+    state: stopped
+  when: transmission_config|changed
+
+- name: Configure
+  copy:
+    src: /var/lib/transmission-daemon/info/settings.json.target
+    dest: /var/lib/transmission-daemon/info/settings.json
+    remote_src: true
+  when: transmission_config|changed
+  notify: Restart transmission
+
+- name: Enable transmission
+  service:
+    name: transmission-daemon
+    enabled: true

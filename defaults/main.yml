@@ -1,0 +1,9 @@
+---
+
+complete_directory: /var/lib/transmission-daemon/complete
+transmission_peer_port: 51412
+
+rpc_enabled: false
+rpc_address: 127.0.0.1
+rpc_port: 8080
+rpc_whitelist: "127.0.0.1,192.168.*.*"
