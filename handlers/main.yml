@@ -1,0 +1,6 @@
+---
+
+- name: Restart transmission
+  service:
+    name: transmission-daemon
+    state: restarted
