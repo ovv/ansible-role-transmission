@@ -1,5 +1,5 @@
-pyslackers.python
-=========
+ovv.transmission
+================
 
 [![Build Status](https://travis-ci.org/ovv/ansible-role-transmission.svg?branch=master)](https://travis-ci.org/ovv/ansible-role-transmission)
 
@@ -15,11 +15,8 @@ Role Variables
 * `rpc_password`: Password for RPC user.
 * `rpc_whitelist`: Whitelist IPs for RPC (default to `127.0.0.1,192.168.*.*`).
 
-* `complete_directory`: Directory for completed downloads (default to `/home/{{ transmission_sftp_user }}/complete` or `/var/lib/transmission-daemon/complete`).
+* `complete_directory`: Directory for completed downloads (default to `/var/lib/transmission-daemon/complete`).
 * `transmission_peer_port`: Transmission port (default to `51412`).
-
-* `transmission_sftp_user`: Create user for sftp access.
-* `transmission_sftp_password`: Password for sftp user.
 
 Example Playbook
 ----------------
