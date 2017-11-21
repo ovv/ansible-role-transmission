@@ -3,6 +3,7 @@
   vars:
     rpc_user: foo
     rpc_password: bar
-    rpc_enabled: false
+    rpc_enabled: true
+    rpc_port: 8080
   roles:
     - ansible-role-transmission
