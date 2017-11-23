@@ -5,6 +5,21 @@ ovv.transmission
 
 Ansible role to install and configure Transmission.
 
+Installation
+------------
+
+To install this roles clone it into your roles directory.
+
+```bash
+$ git clone https://github.com/ovv/ansible-role-transmission.git ovv.transmission
+```
+
+If your playbook already reside inside a git repository you can clone it by using git submodules.
+
+```bash
+$ git submodule add -b master https://github.com/ovv/ansible-role-transmission.git ovv.transmission
+```
+
 Role Variables
 --------------
 
