@@ -5,6 +5,11 @@ ovv.transmission
 
 Ansible role to install and configure Transmission.
 
+Requirements
+------------
+
+An nginx installation is recommended. We recommend using [pyslackers.nginx](https://github.com/pyslackers/ansible-role-nginx).
+
 Installation
 ------------
 
@@ -28,7 +33,7 @@ Role Variables
 * `rpc_port`: RPC listening port (default to `8080`).
 * `rpc_user`: Authorized user for RPC.
 * `rpc_password`: Password for RPC user.
-* `rpc_whitelist`: Whitelist IPs for RPC (default to `127.0.0.1,192.168.*.*`).
+* `rpc_whitelist`: List of whitelist IPs for RPC (default to `[127.0.0.1]`).
 
 * `complete_directory`: Directory for completed downloads (default to `/var/lib/transmission-daemon/complete`).
 * `transmission_peer_port`: Transmission port (default to `51412`).
@@ -38,12 +43,39 @@ Example Playbook
 
 ```yml
 - hosts: localhost
+  roles:
+    - ovv.transmission
+    - pyslackers.nginx
   vars:
     rpc_user: foo
     rpc_password: bar
-    rpc_enabled: false
-  roles:
-    - ovv.transmission
+    rpc_enabled: true
+
+    # pyslackers.nginx variables
+    nginx_sites:
+      transmission:
+        locations:
+          rpc:
+            location: /rpc
+            proxy_pass: http://127.0.0.1:8080
+          web:
+            location: /web/
+            proxy_pass: http://127.0.0.1:8080
+          upload:
+            location: /upload
+            proxy_pass: http://127.0.0.1:8080
+          style:
+            location: /web/style
+            custom: alias /usr/share/transmission/web/style/;
+          js:
+            location: /web/javascript
+            custom: alias /usr/share/transmission/web/javascript/;
+          images:
+            location: /web/images/
+            custom: alias /usr/share/transmission/web/images/;
+          root:
+            location: /
+            proxy_pass: http://127.0.0.1:8080/web
 ```
 
 License

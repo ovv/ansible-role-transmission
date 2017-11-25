@@ -1,9 +1,36 @@
 ---
 - hosts: localhost
+  roles:
+    - ansible-role-transmission
+    - pyslackers.nginx
   vars:
     rpc_user: foo
     rpc_password: bar
     rpc_enabled: true
     rpc_port: 8080
-  roles:
-    - ansible-role-transmission
+
+    # pyslackers.nginx variables
+    nginx_sites:
+      transmission:
+        locations:
+          rpc:
+            location: /rpc
+            proxy_pass: http://127.0.0.1:8080
+          web:
+            location: /web/
+            proxy_pass: http://127.0.0.1:8080
+          upload:
+            location: /upload
+            proxy_pass: http://127.0.0.1:8080
+          style:
+            location: /web/style
+            custom: alias /usr/share/transmission/web/style/;
+          js:
+            location: /web/javascript
+            custom: alias /usr/share/transmission/web/javascript/;
+          images:
+            location: /web/images/
+            custom: alias /usr/share/transmission/web/images/;
+          root:
+            location: /
+            proxy_pass: http://127.0.0.1:8080/web

@@ -12,6 +12,7 @@ install:
   - python --version
   - ansible --version
   - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
+  - git clone https://github.com/pyslackers/ansible-role-nginx ../pyslackers.nginx
 script:
   - ansible-lint tasks/main.yml
   - ansible-playbook -i tests/inventory --syntax-check --list-tasks tests/test.yml
@@ -21,4 +22,4 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
-  - curl localhost:8080
+  - curl localhost:80 -v

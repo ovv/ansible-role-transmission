@@ -53,7 +53,7 @@
   "rpc-port": {{ rpc_port }},
   "rpc-url": "/",
   "rpc-username": "{{ rpc_user }}",
-  "rpc-whitelist": "{{ rpc_whitelist }}",
+  "rpc-whitelist": "{{ rpc_whitelist | join(',') }}",
   "rpc-whitelist-enabled": true,
   "scrape-paused-torrents-enabled": true,
   "script-torrent-done-enabled": false,
