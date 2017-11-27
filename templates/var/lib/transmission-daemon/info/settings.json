@@ -12,7 +12,7 @@
   "blocklist-url": "http://iblocklist.commiecast.com/f/tagqfxtteucbuldhezkz/bt_level1.gz",
   "cache-size-mb": 4,
   "dht-enabled": true,
-  "download-dir": "{{ complete_directory }}",
+  "download-dir": "{{ transmission_complete_directory }}",
   "download-limit": 100,
   "download-limit-enabled": 0,
   "download-queue-enabled": true,

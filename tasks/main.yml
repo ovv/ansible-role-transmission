@@ -12,11 +12,11 @@
 
 - name: Create complete directory
   file:
-    path: "{{ complete_directory }}"
+    path: "{{ transmission_complete_directory }}"
     state: directory
     owner: debian-transmission
-    group: debian-transmission
-    mode: 0777
+    group: "{{ transmission_complete_directory_group }}"
+    mode: "{{ transmission_complete_directory_mode }}"
 
 - name: Check configuration
   template:

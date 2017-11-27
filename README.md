@@ -35,7 +35,9 @@ Role Variables
 * `rpc_password`: Password for RPC user.
 * `rpc_whitelist`: List of whitelist IPs for RPC (default to `[127.0.0.1]`).
 
-* `complete_directory`: Directory for completed downloads (default to `/var/lib/transmission-daemon/complete`).
+* `transmission_complete_directory`: Directory for completed downloads (default to `/var/lib/transmission-daemon/complete`).
+* `transmission_complete_directory_group`: Group for completed downloads directory (default to `debian-transmission`).
+* `transmission_complete_directory_mode`: Mode for completed downloads directory (default to `0774`).
 * `transmission_peer_port`: Transmission port (default to `51412`).
 
 Example Playbook
