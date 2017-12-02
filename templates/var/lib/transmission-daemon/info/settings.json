@@ -7,7 +7,7 @@
   "alt-speed-time-end": 1020,
   "alt-speed-up": 50,
   "bind-address-ipv4": "{{ ansible_host }}",
-  "bind-address-ipv6": "fe80::",
+  "bind-address-ipv6": "::",
   "blocklist-enabled": false,
   "blocklist-url": "http://iblocklist.commiecast.com/f/tagqfxtteucbuldhezkz/bt_level1.gz",
   "cache-size-mb": 4,
@@ -43,7 +43,7 @@
   "ratio-limit-enabled": true,
   "rename-partial-files": true,
   "rpc-authentication-required": true,
-  "rpc-bind-address": "{{ rpc_address }}",
+  "rpc-bind-address": "127.0.0.1",
 {% if rpc_enabled %}
   "rpc-enabled": true,
 {% else %}
@@ -53,8 +53,8 @@
   "rpc-port": {{ rpc_port }},
   "rpc-url": "/",
   "rpc-username": "{{ rpc_user }}",
-  "rpc-whitelist": "{{ rpc_whitelist | join(',') }}",
-  "rpc-whitelist-enabled": true,
+  "rpc-whitelist": "127.0.0.1",
+  "rpc-whitelist-enabled": false,
   "scrape-paused-torrents-enabled": true,
   "script-torrent-done-enabled": false,
   "script-torrent-done-filename": "",
