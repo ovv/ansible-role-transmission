@@ -29,11 +29,9 @@ Role Variables
 --------------
 
 * `rpc_enabled`: Enable transmission RPC (default to `false`).
-* `rpc_address`: RPC listening address (default to `127.0.0.1`).
 * `rpc_port`: RPC listening port (default to `8080`).
 * `rpc_user`: Authorized user for RPC.
 * `rpc_password`: Password for RPC user.
-* `rpc_whitelist`: List of whitelist IPs for RPC (default to `[127.0.0.1]`).
 
 * `transmission_complete_directory`: Directory for completed downloads (default to `/var/lib/transmission-daemon/complete`).
 * `transmission_complete_directory_group`: Group for completed downloads directory (default to `debian-transmission`).
