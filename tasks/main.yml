@@ -29,14 +29,14 @@
   service:
     name: transmission-daemon
     state: stopped
-  when: transmission_config|changed
+  when: transmission_config is changed
 
 - name: Configure
   copy:
     src: /var/lib/transmission-daemon/info/settings.json.target
     dest: /var/lib/transmission-daemon/info/settings.json
     remote_src: true
-  when: transmission_config|changed
+  when: transmission_config is changed
   notify: Restart transmission
 
 - name: Enable transmission
