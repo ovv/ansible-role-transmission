@@ -12,4 +12,4 @@ rpc_port: 8080
 rpc_whitelist:
   - 127.0.0.1
 
-  speed_limit_down: 40000
+speed_limit_down: 40000
