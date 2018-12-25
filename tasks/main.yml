@@ -3,12 +3,11 @@
 - name: Install packages
   become: true
   apt:
-    pkg: "{{ item }}"
+    pkg:
+      - transmission-daemon
+      - python-passlib
     state: latest
     force: yes
-  with_items:
-    - transmission-daemon
-    - python-passlib
 
 - name: Create complete directory
   file:
