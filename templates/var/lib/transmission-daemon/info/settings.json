@@ -21,7 +21,11 @@
   "idle-seeding-limit": 30,
   "idle-seeding-limit-enabled": false,
   "incomplete-dir": "/var/lib/transmission-daemon/downloads",
+{% if incomplete_dir %}
   "incomplete-dir-enabled": true,
+{% else %}
+  "incomplete-dir-enabled": false,
+{% endif %}
   "lpd-enabled": true,
   "max-peers-global": 200,
   "message-level": 2,

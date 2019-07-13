@@ -4,6 +4,8 @@ transmission_complete_directory: /var/lib/transmission-daemon/complete
 transmission_complete_directory_group: debian-transmission
 transmission_complete_directory_mode: 0774
 
+incomplete_dir: true
+
 transmission_peer_port: 51412
 
 rpc_enabled: false
