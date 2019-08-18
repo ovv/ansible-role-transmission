@@ -6,7 +6,7 @@
     pkg:
       - transmission-daemon
       - python-passlib
-    state: latest
+    state: present
     force: yes
 
 - name: Create complete directory
